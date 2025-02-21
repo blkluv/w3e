@@ -13,7 +13,7 @@ require('leaflet.locatecontrol');
 // Create a basic Leaflet map
 var map = L.map('map').setView([51.4700, 0.2592], 12);
 
-var accessToken = "pk.eyJ1IjoibHV2bmZ0IiwiYSI6ImNscGN5dmcwajA0NHgyd28wZGl0N2YydWwifQ.Wajxh7HVAF_eJ9t03jbArw"; // Replace with your actual access token
+var accessToken = "cc006399f6b2bdd1"; // Replace with your actual access token
 var layer = protomaps.leafletLayer({
   attribution: 'Map imagery © <a href="https://protomaps.com">Protomaps</a> © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>, Emoji by <a href="http://emojione.com/">Emoji One</a>',
   url: 'https://api.protomaps.com/tiles/v2/{z}/{x}/{y}.pbf?key=' + accessToken
