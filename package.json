@@ -24,7 +24,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build src/index.html src/**/*.html",
-    "start": "npm run build && http-server dist"
+    "start": "npm run build && http-server dist",
+    "dev": "parcel src/index.html",}
   },
   "repository": {
     "type": "git",
