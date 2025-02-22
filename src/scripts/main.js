@@ -1,18 +1,14 @@
-'use strict'
+// Import jQuery (if needed for other parts of your code)
+import $ from 'jquery'; // Or const $ = require('jquery'); if using CommonJS
 
-// Require and expose jQuery to window for Bootstrap
-window.$ = window.jQuery = require('jquery')
+window.$ = window.jQuery = $; // Make jQuery available to window
 
-// Don't require all of Bootstrap, just the parts we need
-// require('bootstrap')
-require('bootstrap/js/dist/util.js')
-// require('bootstrap/js/dist/alert.js')
-require('bootstrap/js/dist/button.js')
-require('bootstrap/js/dist/carousel.js')
-require('bootstrap/js/dist/collapse.js')
-require('bootstrap/js/dist/dropdown.js')
-// require('bootstrap/js/dist/modal.js')
-// require('bootstrap/js/dist/scrollspy.js')
-// require('bootstrap/js/dist/tab.js')
-// require('bootstrap/js/dist/tooltip.js')
-// require('bootstrap/js/dist/popover.js')
+// Import only the necessary Bootstrap JS components
+import 'bootstrap/js/dist/util.js';
+import 'bootstrap/js/dist/button.js';
+import 'bootstrap/js/dist/carousel.js';
+import 'bootstrap/js/dist/collapse.js';
+import 'bootstrap/js/dist/dropdown.js';
+
+// Include Bootstrap CSS (do this in your main SCSS file - recommended)
+// OR import 'bootstrap/dist/css/bootstrap.min.css'; (less recommended)

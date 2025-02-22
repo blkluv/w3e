@@ -178,11 +178,6 @@ body.login {
   margin-top: 20px;
   margin-bottom: 40px;
 
-  .emojione {
-    width: 128px;
-    height: 128px;
-  }
-
   h3 {
     font-weight: 300;
     margin: 20px auto;
@@ -191,6 +186,20 @@ body.login {
   p {
     font-weight: 200;
     line-height: 1.5;
+  }
+
+  // Emoji-mart styles - Targets the <img> elements that emoji-mart inserts
+  #easy-emoji img,
+  #universal-emoji img,
+  #future-emoji img,
+  #hero-emojis img,
+  #intro-emojis img,
+  #triangle-emojis img,
+  #quote-emoji img,
+  #emojis img {
+    width: 128px;  // Adjust as needed
+    height: 128px; // Adjust as needed
+    vertical-align: middle;
   }
 }
 
@@ -209,13 +218,10 @@ body.login {
 }
 
 .package-hero {
-  //background-image: url(/img/package.jpg);
   position: relative;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  //min-height: 300px;
-  //height: 600px;
   padding: 0;
 
   p {
@@ -274,54 +280,54 @@ body.login {
   font-weight: 200;
 }
 
-footer {
-  background-color: #4d4d4d;
-  min-height: 300px;
-  color: #eee;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  font-size: 0.85rem;
-
-  h4 {
-    text-transform: uppercase;
-    margin-bottom: 1em;
-    font-size: 1rem;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 30px;
-  }
-
-  li {
-    margin-bottom: 0.2em;
-  }
-
-  li a {
+  footer {
+    background-color: #4d4d4d;
+    min-height: 300px;
     color: #eee;
-    font-weight: 200;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 0.85rem;
+  
+    h4 {
+      text-transform: uppercase;
+      margin-bottom: 1em;
+      font-size: 1rem;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 30px;
+    }
+  
+    li {
+      margin-bottom: 0.2em;
+    }
+  
+    li a {
+      color: #eee;
+      font-weight: 200;
+    }
+  
+    a:hover,
+    a:active,
+    a:visited {
+      color: #eee;
+    }
+  
+    .twitter-timeline {
+      margin: 0 auto;
+    }
   }
-
-  a:hover,
-  a:active,
-  a:visited {
-    color: #eee;
+  
+  .copyright {
+    background-color: #4d4d4d;
+    border-top: 1px solid #777;
+    padding: 20px 0;
+    color: #aaa;
+    font-size: 12px;
   }
-
-  .twitter-timeline {
-    margin: 0 auto;
+  
+  .subscribe .button {
+    padding: 6px 10px;
   }
-}
-
-.copyright {
-  background-color: #4d4d4d;
-  border-top: 1px solid #777;
-  padding: 20px 0;
-  color: #aaa;
-  font-size: 12px;
-}
-
-.subscribe .button {
-  padding: 6px 10px;
-}

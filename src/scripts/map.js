@@ -1,84 +1,88 @@
-'use strict'
+'use strict';
 
-// Shim `process` for `geohash-emoji` (Parcel will throw error without it)
-require('process')
-var L = require('leaflet')
-var LHash = require('leaflet-hash')
-var geocoder = require('leaflet-geocoder-mapzen')
-var geohash = require('geohash-emoji')
-var emojione = require('emojione')
-var protomaps = require('protomaps')
-require('leaflet.locatecontrol')
+require('process');
 
-// Create a basic Leaflet map
-var map = L.map('map').setView([51.4700, 0.2592], 12)
+import L from 'leaflet';
+import data from 'emoji-mart';
+import 'leaflet-hash';
+import 'leaflet.locatecontrol';
+import 'leaflet-control-geocoder';  // Import the geocoder
 
-var accessToken = "cef94f3ae8cfd882"
-var layer = protomaps.leafletLayer({
-  attribution:'Map imagery © <a href="https://protomaps.com">Protomaps</a> © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>, Emoji by <a href="http://emojione.com/">Emoji One</a>',
-  url:'https://api.protomaps.com/tiles/v2/{z}/{x}/{y}.pbf?key=' + accessToken
-})
-layer.addTo(map)
+// Protomaps Access Token (REPLACE WITH YOUR ACTUAL TOKEN - ESSENTIAL!)
+const protomapsAccessToken = "cef94f3ae8cfd882"; // Replace with your actual token
 
-var urlFragment = decodeURIComponent(window.location.hash).replace('#', '');
-if ([...urlFragment].length == 3) {
-  var location = geohash.coordFromHash(urlFragment);
-  map.setView([location[0], location[1]], 12);
-} else {
-  new L.Hash(map)
-}
+// Geocoding API Key (REPLACE WITH YOUR ACTUAL API KEY)
+const geocodingApiKey = "ge-793a784e03376196"; // Replace with your actual API key (e.g., OpenCage, etc.)
+
+// Coordinates for Atlantic City Ocean Club Condos (Precise - Replace with your best estimate)
+const atlanticCityLatitude = 39.3532; // Example: Replace with the best coordinates you can find
+const atlanticCityLongitude = -74.4371; // Example: Replace with the best coordinates you can find
+
+// Create Leaflet map, centered on Atlantic City
+const map = L.map('map').setView([atlanticCityLatitude, atlanticCityLongitude], 15);
+
+const layer = protomaps.leafletLayer({
+  attribution: 'Map imagery © <a href="https://protomaps.com">Protomaps</a> © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>, Emoji by <a href="https://emojione.com/">Emoji One</a>',
+  url: `https://api.protomaps.com/tiles/v2/{z}/{x}/{y}.pbf?key=${protomapsAccessToken}`
+});
+layer.addTo(map);
+
+// Leaflet Hash
+new L.Hash(map);
 
 // Geolocator
 L.control.locate({
   drawCircle: false,
   follow: false,
   showPopup: false,
-  markerStyle: {
-    opacity: 0,
+  markerStyle: { opacity: 0 }
+}).addTo(map);
+
+// Geocoding (leaflet-control-geocoder)
+const geocoder = L.Control.Geocoder({
+  position: 'topleft',
+  geocoder: new L.Control.Geocoder.OpenCage(geocodingApiKey, { // Use OpenCage (or other provider)
+    // other options if needed
+  })
+}).addTo(map);
+
+
+// Emoji Display
+map.on('moveend', getEmoji);
+
+// Touch Detection
+if ('ontouchstart' in document.documentElement) {
+  document.body.classList.add('leaflet-touch');
+}
+
+function getEmoji() {
+  const center = map.getCenter();
+  const emoji = geohash.coordAt(center.lat, center.lng);
+  window.location.replace("#" + emoji);
+
+  const emojiData = data.find(e => e.unified === geohash.unifiedFromHash(emoji));
+  const emojiContainer = document.getElementById('emojis');
+
+  if (emojiData) {
+    const img = document.createElement('img');
+    img.src = `https://twemoji.maxcdn.com/v/latest/72x72/${emojiData.unified}.png`;
+    img.alt = emoji;
+    img.onload = () => {
+      emojiContainer.innerHTML = '';
+      emojiContainer.appendChild(img);
+    };
+    img.onerror = () => {
+      emojiContainer.textContent = emoji;
+    };
+    emojiContainer.innerHTML = '';
+    emojiContainer.appendChild(img);
+  } else {
+    emojiContainer.textContent = emoji;
   }
-}).addTo(map)
 
-// Bundle
-const pointIcon = require('../images/point_icon.png')
-const polygonIcon = require('../images/polygon_icon.png')
-
-// Add Pelias geocoding plugin
-var pelias = new L.Control.Geocoder('ge-1793afb81c0a7784', {
-  url: 'https://api.geocode.earth/v1',
-  markers: false,
-  pointIcon: pointIcon,
-  polygonIcon: polygonIcon,
-  expanded: true,
-  fullWidth: false, // Handle this ourselves.
-}).addTo(map)
-
-map.on('moveend', getEmoji)
-
-// Configure Emoji
-emojione.emojiSize = '64'
-
-getEmoji()
-
-if (document.getElementById('map').className.indexOf('leaflet-touch') > 0) {
-  document.body.className += ' leaflet-touch'
+  setTitle(emoji);
 }
 
-function getEmoji () {
-  var center = map.getCenter()
-  var lat = center.lat
-  var lng = center.lng
-  var emoji = geohash.coordAt(lat, lng)
-  window.location.replace("#" + emoji)
-  var output = emojione.toImage(emoji)
-
-  var link = document.createElement('a');
-  link.setAttribute('href', '#' + emoji);
-  link.innerHTML = output;
-
-  document.getElementById('emojis').innerHTML = link.outerHTML
-  setTitle(emoji)
-}
-
-function setTitle (emoji) {
-  document.title = emoji + ' · what3emojis map'
+function setTitle(emoji) {
+  document.title = emoji + ' · what3emojis map';
 }

@@ -44,7 +44,7 @@
 
       <p class="lead">The new 3-emoji address (ee-moh-jad-ee) for any location in the world, using humanity’s only common unambiguous&nbsp;language.</p>
 
-      <p class="lead">🙌🌍💫</p>
+      <p class="lead" id="hero-emojis">🙌🌍💫</p>
 
       <div class="jumbotron-button">
         <a href="/map" class="explore-map-button">Explore EMOJAD Map</a>
@@ -66,28 +66,28 @@
           Addresses are hard. Who can remember street addresses or latitude/longitude pairs? You could do much better with three totally random English words, but then there’s that pesky language barrier. No system is perfect, <em>except for emoji</em>.
         </p>
 
-        <p class="lead">🙋😸👲</p>
+        <p class="lead" id="intro-emojis">🙋😸👲</p>
       </div>
 
       <hr>
 
       <div class="row">
         <div class="col-md-4 triptych">
-          <img class="emojione" alt="😊" src="https://cdn.jsdelivr.net/emojione/assets/svg/1F60A.svg?v=1.2.4">
+          <div id="easy-emoji"></div>
           <h3>Easy to use</h3>
           <p>
              Emoji are easy to type, understand, and completely unambiguous in meaning with zero controversies. This makes it the ideal way to address arbitrary locations around the world.
           </p>
         </div>
         <div class="col-md-4 triptych">
-          <img class="emojione" alt="🌌" src="https://cdn.jsdelivr.net/emojione/assets/svg/1F30C.svg?v=1.2.4">
+          <div id="universal-emoji"></div>
           <h3>Universally recognized</h3>
           <p>
             Emoji accurately represent all human thought and emotion. Nine out of ten experts predict that emoji will become the dominant, if not sole language of the entire human race by the year 2075.
           </p>
         </div>
         <div class="col-md-4 triptych">
-          <img class="emojione" alt="🚀" src="https://cdn.jsdelivr.net/emojione/assets/svg/1F680.svg?v=1.2.4">
+          <div id="future-emoji"></div>
           <h3>Future proof</h3>
           <p>
             The Unicode Consortium is constantly evaluating cultural trends for emoji candidates and adding millions of new emoji every year to fully index human communication.
@@ -101,7 +101,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 offset-md-1">
-          <p class="triangles"><img class="emojione" alt="🔺" src="https://cdn.jsdelivr.net/emojione/assets/png/1F53A.png?v=1.2.4"><img class="emojione" alt="🔻" src="https://cdn.jsdelivr.net/emojione/assets/png/1F53B.png?v=1.2.4"><img class="emojione" alt="🔺" src="https://cdn.jsdelivr.net/emojione/assets/png/1F53A.png?v=1.2.4"></p>
+          <p class="triangles" id="triangle-emojis"></p>
           <p class="boom"><strong>what3emojis</strong> is a global <strong>Dymaxion grid</strong> of gazillions of <strong>4m<span class="x-mark">×</span>4m&nbsp;triangles.</strong></p>
           <p class="boom">Each triangle has a 3-emoji address that will eventually be legally recognized by <strong>all local, state and federal governments&nbsp;everywhere.</strong></p>
         </div>
@@ -126,7 +126,7 @@
     <div class="container">
       <p class="quote boom">
         <span class="quote-text">
-          <span class="keep-together"><span class="quote-mark">“</span>We are</span> so 😍😍😍😍😍<wbr>&#8203;😍😍😍😍😍😍😍😍😍<wbr>&#8203;😍😍😍😍😍😍😍😍😍<wbr>&#8203;<span class="keep-together">😍😍😍😍😍😍🐈<span class="quote-mark">”</span></span>
+          <span class="keep-together"><span class="quote-mark">“</span>We are</span> so <span id="quote-emoji"></span><span class="keep-together">😍😍😍😍😍😍🐈<span class="quote-mark">”</span></span>
         </span>
       </p>
       <p class="quote-attribution">― State of the Map US</p>
@@ -169,34 +169,3 @@
             <li><a href="https://github.com/louh/what3emojis">Documentation</a></li>
             <li><a href="https://github.com/louh/what3emojis">License</a></li>
             <li><a href="https://github.com/louh/what3emojis">Contribute</a></li>
-            <li><a href="https://github.com/louh/what3emojis/issues">Report issues</a></li>
-          </ul>
-        </div>
-        <div class="col-xs-10 offset-xs-1 col-sm-10 offset-sm-1 col-md-6 offset-md-0">
-          <a class="twitter-timeline" href="https://twitter.com/search?q=what3emojis" data-widget-id="629995496183058436" height="200" data-chrome="noheader nofooter noborder transparent">Tweets about what3emojis</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <div class="copyright">
-    <div class="container">
-      What3Emojis is a project of the <a href="https://biffud.com/" rel="noopener noreferrer">Bad Idea Factory</a>.
-      <span class="pull-xs-right">Made with 100% unobtainium.</span>
-    </div>
-  </div>
-
-  <script type="module" src="./scripts/main.js"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-66095957-1', 'auto');
-    ga('send', 'pageview');
-
-  </script>
-</body>
-</html>

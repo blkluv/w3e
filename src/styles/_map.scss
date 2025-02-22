@@ -1,39 +1,50 @@
 #map {
   position: absolute;
-  top: 72px;
+  top: 72px; /* Adjust this value if your header/nav height is different */
   left: 0;
   width: 100%;
-  height: calc(100% - 72px);
+  height: calc(100% - 72px); /* Adjust this value if your header/nav height is different */
 }
 
-//
-// Borrowed the Mapzen 'Locate me' button
-// -----------------------------------------------
-
-.mz-geolocator {
-  top: 122px !important;
+/* Styles for leaflet-control-geocoder */
+.leaflet-control-geocoder {
+  /* Add any desired styles for the geocoder control */
+  border-radius: 4px; /* Example */
+  padding: 4px; /* Example */
 }
 
-.leaflet-touch .mz-geolocator {
-  top: 60px !important;
-  left: auto;
-  right: 10px;
+.leaflet-control-geocoder-form {
+  /* Style the input form */
+  border-radius: 4px; /* Example */
 }
 
-.leaflet-touch .mz-geolocator-button {
-  /* mimic leaflet-bar */
-  border: 2px solid rgba(0,0,0,0.2);
-  background-clip: padding-box;
-  box-shadow: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 6px; /* ??? */
+/* Styles for leaflet.locatecontrol */
+.leaflet-bar.leaflet-control.leaflet-control-locate {
+  /* Style the locate control button */
+  border-radius: 4px; /* Example */
+  padding: 4px; /* Example */
 }
 
-.leaflet-touch .mz-geolocator-icon {
-  background-size: 60%;
+
+/* Styles for the emoji display */
+#emojis {
+  text-align: center;
+  font-size: 3em; /* Adjust as needed */
+  line-height: 58px; /* Adjust as needed */
 }
 
+/* Styles for emoji-mart (Twemoji images) */
+#emojis img { /* Target the images directly */
+  width: 32px;  /* Adjust as needed */
+  height: 32px; /* Adjust as needed */
+  vertical-align: middle; /* Align emoji vertically */
+}
+
+#emojis img:not(:last-of-type) {
+  margin-right: 16px; /* Adjust as needed */
+}
+
+/* Styles for the pin marker (if still used) */
 #pin {
   position: absolute;
   width: 176px;
@@ -65,17 +76,11 @@
   -webkit-user-select: none;
 }
 
-#emojis {
-  text-align: center;
-  font-size: 3em;
-  line-height: 58px;
+/* Remove or Adjust Mapzen Geolocator Styles */
+.mz-geolocator {
+  display: none; /* Hide if you're using leaflet.locatecontrol */
 }
 
-img.emojione {
-  width: 32px;
-  height: 32px;
-}
-
-img.emojione:not(:last-of-type) {
-  margin-right: 16px;
+.leaflet-touch .mz-geolocator {
+  display: none; /* Hide if you're using leaflet.locatecontrol */
 }
