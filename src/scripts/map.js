@@ -13,7 +13,7 @@ require('leaflet.locatecontrol')
 // Create a basic Leaflet map
 var map = L.map('map').setView([51.4700, 0.2592], 12)
 
-var accessToken = "1b6f5f2a9ad19a57"
+var accessToken = "cef94f3ae8cfd882"
 var layer = protomaps.leafletLayer({
   attribution:'Map imagery © <a href="https://protomaps.com">Protomaps</a> © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>, Emoji by <a href="http://emojione.com/">Emoji One</a>',
   url:'https://api.protomaps.com/tiles/v2/{z}/{x}/{y}.pbf?key=' + accessToken
